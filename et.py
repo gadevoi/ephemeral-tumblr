@@ -95,7 +95,7 @@ for p in old_posts:
         print '\t deleting %d' % p['id']
     response = client.delete_post(args.tumblr_url, p['id'])
     if not 'id' in response:
-        print '%d: %d\t%s' % (p['id'], response['meta']['status'], response['meta']['msg']
+        print '%d: %d\t%s' % (p['id'], response['meta']['status'], response['meta']['msg'])
 
 print 'done'
     
