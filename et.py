@@ -89,10 +89,13 @@ if not args.y:
         sys.exit()
 
 print 'deleting %d posts from %s...' % (len(old_posts), args.tumblr_url)
+old_posts.reverse()
 for p in old_posts:
     if args.v:
         print '\t deleting %d' % p['id']
-    client.delete_post(args.tumblr_url, p['id'])
+    response = client.delete_post(args.tumblr_url, p['id'])
+    if not 'id' in response:
+        print '%d: %d\t%s' % (p['id'], response['meta']['status'], response['meta']['msg']
 
 print 'done'
     
