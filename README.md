@@ -7,6 +7,37 @@ If you don't want your precious posts to be lost forever, you can use this in co
 
 It uses [pytumblr](https://github.com/tumblr/pytumblr), the official python tumblr API client, so you will need to install it first, and set up the OAuth permissions.
 
+## setup:
+
+In order for this to work, you have to register for an application in  [http://www.tumblr.com/oauth/apps](http://www.tumblr.com/oauth/apps). Fill in all the details, and for **Default Callback URL**, use: `http://localhost:3000/auth/tumblr/callback`. Click on **register**, and then go to https://api.tumblr.com/console/calls/user/info. There on the PYTHON tab you will get  something like 
+
+```python
+# Authenticate via OAuth
+client = pytumblr.TumblrRestClient(
+  'abcatuirsnetnrau',
+  'deftasriunternsatuirnes',
+  'rtsatuinesrtnauirste',
+  'tsraiunterstuiaentens'
+)
+
+# Make the request
+client.info()
+```
+
+copy the first part (_client = pytumblr.TumblrRestClient('xxx','xxx','xxx','xxx')_) and past it in the script, replacing the lines
+
+```python
+# Authenticate via OAuth (we need it to delete)
+client = pytumblr.TumblrRestClient(
+    CONSUMER_KEY,
+    CONSUMER_SECRET,
+    OAUTH_TOKEN,
+    OAUTH_TOKEN_SECRET
+)
+```
+
+This will allow the script to delete posts on your blogs.
+
 ## usage:
 
 ```
