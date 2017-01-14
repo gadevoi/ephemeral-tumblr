@@ -51,26 +51,6 @@ parser.add_argument("-v", help="verbose", action="store_true")
 args = parser.parse_args()
 
 # Authenticate via OAuth (we need it to delete)
-
-REQUEST_TOKEN_URL = 'http://www.tumblr.com/oauth/request_token'
-AUTHORIZATION_URL = 'http://www.tumblr.com/oauth/authorize'
-ACCESS_TOKEN_URL = 'http://www.tumblr.com/oauth/access_token'
-CONSUMER_KEY = 'SECRET_CONSUMER_KEY'
-CONSUMER_SECRET = 'SECRET_CONSUMER_SECRET'
-
-consumer = oauth2.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
-client = oauth2.Client(consumer)
-
-resp, content = client.request(REQUEST_TOKEN_URL, "GET")
-
-request_token = dict(urlparse.parse_qsl(content))
-OAUTH_TOKEN = request_token['oauth_token']
-OAUTH_TOKEN_SECRET = request_token['oauth_token_secret']
-
-print "Request Token:"
-print "    - oauth_token        = %s" % OAUTH_TOKEN
-print "    - oauth_token_secret = %s" % OAUTH_TOKEN_SECRET
-
 client = pytumblr.TumblrRestClient(
     CONSUMER_KEY,
     CONSUMER_SECRET,
